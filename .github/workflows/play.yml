@@ -9,5 +9,9 @@ jobs:
     steps:
       - name: Checkout
         run: |
-          echo ${{ vars.DOCKERHUB_USERNAME }}
-          echo ${{ secrets.DOCKERHUB_TOKEN }}
+          echo $DO_USER
+          echo $DO_PASS
+
+        env: 
+          DO_USER: ${{ vars.DOCKERHUB_USERNAME }}
+          DO_PASS: ${{ secrets.DOCKERHUB_TOKEN }}
