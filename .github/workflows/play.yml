@@ -13,5 +13,7 @@ jobs:
           echo $DO_PASS
 
         env: 
-          DO_USER: ${{ vars.DOCKERHUB_USERNAME }}
-          DO_PASS: ${{ secrets.DOCKERHUB_TOKEN }}
+          #DO_USER: ${{ vars.DOCKERHUB_USERNAME }}
+          #DO_PASS: ${{ secrets.DOCKERHUB_TOKEN }}
+          DO_USER: DOCKERHUB_USERNAME
+          DO_PASS: secrets.DOCKERHUB_TOKEN
