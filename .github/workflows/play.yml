@@ -35,12 +35,12 @@ jobs:
 
   container:
     runs-on: self-hosted
-      steps:
-        - name: build container
-          run: | 
-            sudo yum remove docker* podman* -y
-            sudo dnf -y install dnf-plugins-core && \
-            sudo dnf config-manager --add-repo https://download.docker.com/linux/rhel/docker-ce.repo && \
-            sudo dnf install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y && \
-            sudo systemctl enable --now docker && \
-            docker run -itd -p 8080:80 --name container-${{ github.run_number }} ${{ secrets.DOCKER_USERNAME }}/httpd:${{ github.run_number }}
+    steps:
+      - name: build container
+        run: | 
+          sudo yum remove docker* podman* -y
+          sudo dnf -y install dnf-plugins-core && \
+          sudo dnf config-manager --add-repo https://download.docker.com/linux/rhel/docker-ce.repo && \
+          sudo dnf install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y && \
+          sudo systemctl enable --now docker && \
+          docker run -itd -p 8080:80 --name container-${{ github.run_number }} ${{ secrets.DOCKER_USERNAME }}/httpd:${{ github.run_number }}
