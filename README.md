@@ -8,6 +8,7 @@ This repository contains resources for automating Docker image creation and depl
 1. **`gh_docker.yml`**  
    - Automates:
      - Login to Docker Hub.
+     - Place this file inside the .github/workflows directory
      - Docker image build and push on github-hosted runners.
      - Running containers on self-hosted runners.
 
