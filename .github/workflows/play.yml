@@ -17,6 +17,6 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: .
-          file: Dockerfile
+          file: ./Dockerfile
           push: true
           tags: ramesh0112/httpd:new, ramesh0112/httpd:${{ github.run_number }}
