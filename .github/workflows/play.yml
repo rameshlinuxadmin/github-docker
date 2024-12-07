@@ -52,4 +52,4 @@ jobs:
     needs: docker
     steps:
       - name: build container
-        run: docker run -itd -p 8080:80 --name container:${{ github.run_number }} ${{ secrets.DOCKER_USERNAME }}/httpd:${{ github.run_number }}
+        run: docker run -itd -p 8080:80 --name container_${{ github.run_number }} ${{ secrets.DOCKER_USERNAME }}/httpd:${{ github.run_number }}
