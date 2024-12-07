@@ -24,4 +24,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ vars.DOCKER_USERNAME }}/httpd:v13
+          tags: ${{ secrets.DOCKER_USERNAME }}/httpd:v13
