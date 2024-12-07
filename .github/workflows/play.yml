@@ -6,24 +6,28 @@ on:
 jobs:
   docker:
     runs-on: ubuntu-latest
+    # Login to Docker Hub
     steps:
       - name: Login to Docker Hub
         uses: docker/login-action@v3
         with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
-      
+          username: ${{ secrets.DOCKER_USERNAME }} #docker hub username
+          password: ${{ secrets.DOCKER_PASSWORD }} #docker hub access token 
+
+    # Checkout the repo to use the file present in repo  
       - name: checkout
         uses: actions/checkout@v4
 
-      #- name: Build and push
-      #  run: docker build . -t ramesh0112/httpd:${{ github.run_number }}
-
+    # Push the  built image to the docker hub registry
       - name: push
-      #  run: docker push ramesh0112/httpd:${{ github.run_number }}
         uses: docker/build-push-action@v2
         with:
-          context: .
-          #file: ./.github/workflows/Dockerfile
+          context: . #if the file is in the root directory of the repository
           push: true
-          tags: ramesh0112/httpd:new, ramesh0112/httpd:${{ github.run_number }}
+          tags: ramesh0112/httpd:${{ github.run_number }} #github.run_number --> this provide run number as tag to image
+
+
+      #- name: Build and Push Image
+      #  run: |
+          #docker build . -t ramesh0112/httpd:${{ github.run_number }} 
+          #docker push ramesh0112/httpd:${{ github.run_number }}
